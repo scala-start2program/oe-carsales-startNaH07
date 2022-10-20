@@ -1,0 +1,148 @@
+﻿@page
+@model CarSales.Pages.Cars.EditModel
+
+@{
+    ViewData["Title"] = "Wagen wijzigen";
+    string imagePath = "~/images/" + (Model.Car.ImagePath ?? "noimage.jpg");
+}
+
+<h1>Wagen wijzigen</h1>
+<hr />
+<div class="row">
+    <div class="col-8 col-md-6">
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Car.Id" />
+            <input type="hidden" asp-for="Car.ImagePath" />
+            <table class="table table-bordered table-striped">
+                <tr>
+                    <td class="col-3">
+                        <label asp-for="Car.BrandId" class="control-label"></label>
+
+                    </td>
+                    <td class="col-9">
+                        <div class="form-group">
+                            <select asp-for="Car.BrandId" class="form-control" asp-items="ViewBag.BrandId"></select>
+                            <span asp-validation-for="Car.BrandId" class="text-danger"></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label asp-for="Car.FuelId" class="control-label"></label>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <select asp-for="Car.FuelId" class="form-control" asp-items="ViewBag.FuelId"></select>
+                            <span asp-validation-for="Car.FuelId" class="text-danger"></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label asp-for="Car.ModelName" class="control-label"></label>
+
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input asp-for="Car.ModelName" class="form-control" />
+                            <span asp-validation-for="Car.ModelName" class="text-danger"></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label asp-for="Car.Color" class="control-label"></label>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input asp-for="Car.Color" class="form-control" />
+                            <span asp-validation-for="Car.Color" class="text-danger"></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label asp-for="Car.Performance" class="control-label"></label>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input asp-for="Car.Performance" class="form-control" />
+                            <span asp-validation-for="Car.Performance" class="text-danger"></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label asp-for="Car.Mileage" class="control-label"></label>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input asp-for="Car.Mileage" class="form-control" />
+                            <span asp-validation-for="Car.Mileage" class="text-danger"></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label asp-for="Car.Year" class="control-label"></label>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input asp-for="Car.Year" class="form-control" />
+                            <span asp-validation-for="Car.Year" class="text-danger"></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label asp-for="Car.SalesPrice" class="control-label"></label>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input asp-for="Car.SalesPrice" class="form-control" />
+                            <span asp-validation-for="Car.SalesPrice" class="text-danger"></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="control-label">Afbeelding</span>
+                    </td>
+                    <td>
+
+                        <div class="form-group">
+                            <div class="custom-file">
+                                <input asp-for="PhotoUpload" class="custom-file-input form-control" />
+                                <label class="custom-file-label" style="font-style:italic;">Klik hier om foto te wijzigen</label>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-group row col-sm-4 offset-4">
+
+                            <img class="imageThumbnail" src="@imagePath" asp-append-version="true" />
+                        </div>
+
+                    </td>
+                </tr>
+            </table>
+            <hr />
+            <div class="form-group">
+                <div class="btn-group">
+                    <button type="submit" class="btn  btn-success" title="Opslaan">
+                        <i class="far fa-save"></i>
+                    </button>
+                    <a asp-page="Index" class="btn btn-danger" title="Annuleren">
+                        <i class="fas fa-undo-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

@@ -1,0 +1,80 @@
+﻿@page
+@model CarSales.Pages.Cars.IndexModel
+
+@{
+    ViewData["Title"] = "Wagens";
+
+}
+
+<h1>Overzicht wagens</h1>
+<form method="post">
+    <div class="row">
+        <div class="col-md-4">
+            <p>Filter merken : </p>
+            <select name="brandfilter" class="form-control"
+                    asp-for="SelectedBrandId"
+                    asp-items="Model.AvailableBrands" onchange="this.form.submit()"></select>
+        </div>
+        <div class="col-md-4">
+            <p>Filter brandstof : </p>
+            <select name="fuelfilter" class="form-control"
+                    asp-for="SelectedFuelId"
+                    asp-items="Model.AvailableFuels" onchange="this.form.submit()"></select>
+        </div>
+    </div>
+</form>
+<hr />
+<p>
+    <a asp-page="Create" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Nieuwe wagen</a>
+</p>
+<hr />
+<div class="row">
+    @foreach (var item in Model.Car)
+    {
+        string imagePath = "~/images/" + (item.ImagePath ?? "noimage.jpg");
+        <div class="col-6 col-lg-4 p-3">
+            <div class="card">
+                <div class="card-header">
+                    <h3>@Html.DisplayFor(modelItem => item.Brand.BrandName)</h3>
+                    <h4>@Html.DisplayFor(modelItem => item.ModelName)</h4>
+                </div>
+                <a asp-page="./Details" asp-route-id="@item.Id" class="btn carpanel">
+                    <div class="card-body" style="min-height:400px;">
+                        <table class="table table-sm">
+                            <tr>
+                                <td class="col-9" style="text-align:left;">
+                                    @Html.DisplayFor(modelItem => item.Fuel.FuelName)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-9" style="text-align:left;">
+                                    @Html.DisplayFor(modelItem => item.Mileage)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-9" style="text-align:left;">
+                                    @Html.DisplayFor(modelItem => item.SalesPrice)
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="text-center">
+                            <img class="img-fluid" style="max-height:250px;" src="@imagePath" asp-append-version="true" />
+                        </div>
+
+                    </div>
+                </a>
+                <div class="card-footer" style="width:100%; text-align:right;">
+                    <div class="btn-group btn-group-sm  float-right">
+                        <a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning" title="Wijzig"><i class="fas fa-pencil-alt"></i></a>
+                        <a asp-page="./Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger" title="Wissen"><i class="fas fa-trash-alt"></i></a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    }
+
+</div>
+
+

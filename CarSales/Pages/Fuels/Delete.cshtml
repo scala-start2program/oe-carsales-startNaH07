@@ -1,0 +1,32 @@
+﻿@page
+@model CarSales.Pages.Fuels.DeleteModel
+
+@{
+    ViewData["Title"] = "Brandstof verwijderen";
+}
+
+<h1>Brandstof verwijderen</h1>
+<div>
+    <h4>Te verwijderen brandstof</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Fuel.FuelName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Fuel.FuelName)
+        </dd>
+    </dl>
+    <hr />
+    <form method="post">
+        <input type="hidden" asp-for="Fuel.Id" />
+        <div class="btn-group">
+            <button type="submit" class="btn  btn-danger" title="Wissen">
+                <i class="fas fa-trash-alt"></i>
+            </button>
+            <a asp-page="./Index" class="btn btn-success" title="Annuleren">
+                <i class="fas fa-undo-alt"></i>
+            </a>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,36 @@
+﻿@page
+@model CarSales.Pages.Fuels.IndexModel
+
+@{
+    ViewData["Title"] = "De brandstoffen";
+}
+
+<h1>De brandstoffen</h1>
+
+<p>
+    <a asp-page="Create" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Nieuwe brandstof</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Fuel[0].FuelName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Fuel)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FuelName)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning" title="Wijzig"><i class="fas fa-pencil-alt"></i></a>
+                    <a asp-page="./Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger" title="Wissen"><i class="fas fa-trash-alt"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,34 @@
+﻿@page
+@model CarSales.Pages.Brands.DeleteModel
+
+@{
+    ViewData["Title"] = "Merk verwijderen";
+}
+
+<h1>Merk verwijderen</h1>
+
+<div>
+    <h4>Te verwijderen merk</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Brand.BrandName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Brand.BrandName)
+        </dd>
+    </dl>
+    
+    <hr />
+    <form method="post">
+        <input type="hidden" asp-for="Brand.Id" />
+        <div class="btn-group">
+            <button type="submit" class="btn  btn-danger" title="Wissen">
+                <i class="fas fa-trash-alt"></i>
+            </button>
+            <a asp-page="./Index" class="btn btn-success" title="Annuleren">
+                <i class="fas fa-undo-alt"></i>
+            </a>
+        </div>
+    </form>
+</div>

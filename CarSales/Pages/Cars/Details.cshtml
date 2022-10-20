@@ -1,0 +1,102 @@
+﻿@page
+@model CarSales.Pages.Cars.DetailsModel
+
+@{
+    ViewData["Title"] = "Detail wagen";
+    string imagePath = "~/images/" + (Model.Car.ImagePath ?? "noimage.jpg");
+}
+
+<h1>@Html.DisplayFor(model => model.Car.Brand.BrandName)</h1>
+<h2>@Html.DisplayFor(model => model.Car.ModelName)</h2>
+<hr />
+<div class="btn-group">
+    <a asp-page="./Details" asp-route-id="@Model.PreviousId" class="btn btn-light">&lt; Vorige</a>
+    <a asp-page="./Index" class="btn btn-light">
+        Terug naar overzicht
+    </a>
+    <a asp-page="./Details" asp-route-id="@Model.NextId" class="btn btn-light">Volgende &gt;</a>
+</div>
+<hr />
+
+<div class="row">
+    <div class="col-6">
+        <img style="width:80%;" src="@imagePath" asp-append-version="true" />
+
+    </div>
+    <div class="col-6">
+        <table class="table table-bordered table-striped">
+            <tr>
+                <td class="col-3">
+                    @Html.DisplayNameFor(model => model.Car.Brand)
+                </td>
+                <td class="col-9">
+                    @Html.DisplayFor(model => model.Car.Brand.BrandName)
+                </td>
+            </tr>
+            <tr>
+                <td class="col-3">
+                    @Html.DisplayNameFor(model => model.Car.Fuel)
+                </td>
+                <td class="col-9">
+                    @Html.DisplayFor(model => model.Car.Fuel.FuelName)
+                </td>
+            </tr>
+            <tr>
+                <td class="col-3">
+                    @Html.DisplayNameFor(model => model.Car.ModelName)
+                </td>
+                <td class="col-9">
+                    @Html.DisplayFor(model => model.Car.ModelName)
+                </td>
+            </tr>
+            <tr>
+                <td class="col-3">
+                    @Html.DisplayNameFor(model => model.Car.Color)
+                </td>
+                <td class="col-9">
+                    @Html.DisplayFor(model => model.Car.Color)
+                </td>
+            </tr>
+            <tr>
+                <td class="col-3">
+                    @Html.DisplayNameFor(model => model.Car.Performance)
+                </td>
+                <td class="col-9">
+                    @Html.DisplayFor(model => model.Car.Performance)
+                </td>
+            </tr>
+            <tr>
+                <td class="col-3">
+                    @Html.DisplayNameFor(model => model.Car.Mileage)
+                </td>
+                <td class="col-9">
+                    @Html.DisplayFor(model => model.Car.Mileage)
+                </td>
+            </tr>
+            <tr>
+                <td class="col-3">
+                    @Html.DisplayNameFor(model => model.Car.Year)
+                </td>
+                <td class="col-9">
+                    @Html.DisplayFor(model => model.Car.Year)
+                </td>
+            </tr>
+            <tr>
+                <td class="col-3">
+                    @Html.DisplayNameFor(model => model.Car.SalesPrice)
+                </td>
+                <td class="col-9">
+                    @Html.DisplayFor(model => model.Car.SalesPrice)
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+<div class="form-group">
+    <div class="btn-group">
+        <a asp-page="./Edit" asp-route-id="@Model.Car?.Id" class="btn btn-sm btn-warning" title="Wijzig"><i class="fas fa-pencil-alt"></i></a>
+
+    </div>
+</div>

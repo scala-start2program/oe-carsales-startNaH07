@@ -1,0 +1,102 @@
+﻿@page
+@model CarSales.Pages.Cars.DeleteModel
+
+@{
+    ViewData["Title"] = "Verwijderen";
+    string imagePath = "~/images/" + (Model.Car.ImagePath ?? "noimage.jpg");
+}
+
+<h1>Wagen verwijderen</h1>
+<hr />
+
+<div class="col-8 col-md-6">
+    <table class="table table-bordered table-striped">
+        <tr>
+            <td class="col-3">
+                @Html.DisplayNameFor(model => model.Car.Brand)
+            </td>
+            <td class="col-9">
+                @Html.DisplayFor(model => model.Car.Brand.BrandName)
+            </td>
+        </tr>
+        <tr>
+            <td class="col-3">
+                @Html.DisplayNameFor(model => model.Car.Fuel)
+            </td>
+            <td class="col-9">
+                @Html.DisplayFor(model => model.Car.Fuel.FuelName)
+            </td>
+        </tr>
+        <tr>
+            <td class="col-3">
+                @Html.DisplayNameFor(model => model.Car.ModelName)
+            </td>
+            <td class="col-9">
+                @Html.DisplayFor(model => model.Car.ModelName)
+            </td>
+        </tr>
+        <tr>
+            <td class="col-3">
+                @Html.DisplayNameFor(model => model.Car.Color)
+            </td>
+            <td class="col-9">
+                @Html.DisplayFor(model => model.Car.Color)
+            </td>
+        </tr>
+        <tr>
+            <td class="col-3">
+                @Html.DisplayNameFor(model => model.Car.Performance)
+            </td>
+            <td class="col-9">
+                @Html.DisplayFor(model => model.Car.Performance)
+            </td>
+        </tr>
+        <tr>
+            <td class="col-3">
+                @Html.DisplayNameFor(model => model.Car.Mileage)
+            </td>
+            <td class="col-9">
+                @Html.DisplayFor(model => model.Car.Mileage)
+            </td>
+        </tr>
+        <tr>
+            <td class="col-3">
+                @Html.DisplayNameFor(model => model.Car.Year)
+            </td>
+            <td class="col-9">
+                @Html.DisplayFor(model => model.Car.Year)
+            </td>
+        </tr>
+        <tr>
+            <td class="col-3">
+                @Html.DisplayNameFor(model => model.Car.SalesPrice)
+            </td>
+            <td class="col-9">
+                @Html.DisplayFor(model => model.Car.SalesPrice)
+            </td>
+        </tr>
+        <tr>
+            <td class="col-3">
+                @Html.DisplayNameFor(model => model.Car.ImagePath)
+            </td>
+            <td class="col-9">
+                <img class="imageThumbnail" src="@imagePath" asp-append-version="true" />
+            </td>
+        </tr>
+    </table>
+</div>
+<hr />
+<div class="form-group">
+    <form method="post">
+        <input type="hidden" asp-for="Car.Id" />
+        <div class="btn-group">
+            <button type="submit" class="btn  btn-danger" title="Wissen">
+                <i class="fas fa-trash-alt"></i>
+            </button>
+            <a asp-page="./Index" class="btn btn-success" title="Annuleren">
+                <i class="fas fa-undo-alt"></i>
+            </a>
+        </div>
+    </form>
+</div>
+
